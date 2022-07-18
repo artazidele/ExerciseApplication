@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="exercise"
+            type="com.example.exercisesapplication.app.data.Exercise" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="0dp">
+
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginVertical="4dp"
+            app:exerciseName="@{exercise.name}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/body_part_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginVertical="4dp"
+            app:exerciseBodyPart="@{exercise.bodyPart}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_tv" />
+        <ImageView
+            android:id="@+id/gif_url_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:exerciseGif="@{exercise.gifUrl}"
+            app:layout_constraintTop_toBottomOf="@id/body_part_tv"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+        <TextView
+            android:id="@+id/equipment_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginVertical="4dp"
+            app:exerciseEquipment="@{exercise.equipment}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gif_url_iv" />
+        <TextView
+            android:id="@+id/target_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginVertical="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:exerciseTarget="@{exercise.target}"
+            app:layout_constraintTop_toBottomOf="@id/equipment_tv" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
