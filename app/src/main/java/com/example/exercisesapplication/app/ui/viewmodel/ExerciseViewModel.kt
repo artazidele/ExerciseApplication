@@ -15,9 +15,6 @@ enum class ExerciseStatus { LOADING, ERROR, DONE }
 class ExerciseViewModel : ViewModel() {
     private val _exercise_status = MutableLiveData<ExerciseStatus>()
     val exerciseStatus: LiveData<ExerciseStatus> = _exercise_status
-    private val _exercises = MutableLiveData<List<Exercise>>()
-    val exercises: LiveData<List<Exercise>> = _exercises
-
     private val _abs = MutableLiveData<List<Exercise>>()
     val abs: LiveData<List<Exercise>> = _abs
     private val _abductors = MutableLiveData<List<Exercise>>()
@@ -57,21 +54,6 @@ class ExerciseViewModel : ViewModel() {
     private val _upper_back = MutableLiveData<List<Exercise>>()
     val upperBack: LiveData<List<Exercise>> = _upper_back
 
-
-    fun getAllExercisesList() {
-        viewModelScope.launch {
-            _exercise_status.value = ExerciseStatus.LOADING
-            try {
-                _exercises.value = ExerciseApi.retrofitService.getExercisesList()
-                _exercise_status.value = ExerciseStatus.DONE
-            } catch (e: Exception) {
-                Log.d("EXCEPTION", e.toString())
-                _exercise_status.value = ExerciseStatus.ERROR
-                _exercises.value = listOf()
-            }
-        }
-    }
-
     fun filterExercises() {
         viewModelScope.launch {
             _exercise_status.value = ExerciseStatus.LOADING
@@ -95,7 +77,7 @@ class ExerciseViewModel : ViewModel() {
                 var spineF: MutableList<Exercise> = mutableListOf<Exercise>()
                 var trapsF: MutableList<Exercise> = mutableListOf<Exercise>()
                 var tricepsF: MutableList<Exercise> = mutableListOf<Exercise>()
-                var upperBack: MutableList<Exercise> = mutableListOf<Exercise>()
+                var upperBackF: MutableList<Exercise> = mutableListOf<Exercise>()
                 for (exercise in exercisesList) {
                     when (exercise.target) {
                         "adductors" -> adductorsF.add(exercise)
@@ -116,50 +98,51 @@ class ExerciseViewModel : ViewModel() {
                         "spine" -> spineF.add(exercise)
                         "traps" -> trapsF.add(exercise)
                         "triceps" -> tricepsF.add(exercise)
-                        "upper back" -> upperBack.add(exercise)
+                        "upper back" -> upperBackF.add(exercise)
                     }
-//                    if (exercise.target == "abs") {
-//                        abs.add(exercise)
-//                    }
                 }
                 _abs.value = absF
                 _abductors.value = abductorsF
                 _adductors.value = adductorsF
                 _biceps.value = bicepsF
                 _calves.value = calvesF
-//                _abs.value = abs
-//                _abs.value = abs
-//                _abs.value = abs
-//                _abs.value = abs
-//                _abs.value = abs
-//                _abs.value = abs
-//                _abs.value = abs
-//                _abs.value = abs
-//                _abs.value = abs
-//                _abs.value = abs
-//                _abs.value = abs
-//                _abs.value = abs
-//                _abs.value = abs
-//                _abs.value = abs
+                _cardiovascular_system.value = cardiovascularSystemF
+                _delts.value = deltsF
+                _forearms.value = forearmsF
+                _glutes.value = glutesF
+                _hamstrings.value = hamstringsF
+                _lats.value = latsF
+                _levator_scapulae.value = levatorScapulaeF
+                _pectorals.value = pectoralsF
+                _quads.value = quadsF
+                _serratus_anterior.value = serratusAnteriorF
+                _spine.value = spineF
+                _traps.value = trapsF
+                _triceps.value = tricepsF
+                _upper_back.value = upperBackF
                 _exercise_status.value = ExerciseStatus.DONE
             } catch (e: Exception) {
                 Log.d("EXCEPTION", e.toString())
                 _exercise_status.value = ExerciseStatus.ERROR
-                _exercises.value = listOf()
-            }
-        }
-    }
-
-    fun getExercisesListByTarget() {
-        viewModelScope.launch {
-            _exercise_status.value = ExerciseStatus.LOADING
-            try {
-                _exercises.value = ExerciseApi.retrofitService.getExercisesListByTarget("forearms")
-                _exercise_status.value = ExerciseStatus.DONE
-            } catch (e: Exception) {
-                Log.d("EXCEPTION", e.toString())
-                _exercise_status.value = ExerciseStatus.ERROR
-                _exercises.value = listOf()
+                _abs.value = listOf()
+                _abductors.value = listOf()
+                _adductors.value = listOf()
+                _biceps.value = listOf()
+                _calves.value = listOf()
+                _cardiovascular_system.value = listOf()
+                _delts.value = listOf()
+                _forearms.value = listOf()
+                _glutes.value = listOf()
+                _hamstrings.value = listOf()
+                _lats.value = listOf()
+                _levator_scapulae.value = listOf()
+                _pectorals.value = listOf()
+                _quads.value = listOf()
+                _serratus_anterior.value = listOf()
+                _spine.value = listOf()
+                _traps.value = listOf()
+                _triceps.value = listOf()
+                _upper_back.value = listOf()
             }
         }
     }
