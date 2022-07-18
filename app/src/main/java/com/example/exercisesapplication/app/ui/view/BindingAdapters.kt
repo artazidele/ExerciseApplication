@@ -3,7 +3,9 @@ package com.example.exercisesapplication.app.ui.view
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -88,17 +90,17 @@ fun bindAllBtn(statusBtn: Button, status: ExerciseStatus?) {
     }
 }
 
-@BindingAdapter("allRV")
-fun bindAllRV(recyclerView: RecyclerView, status: ExerciseStatus?) {
+@BindingAdapter("allLL")
+fun bindAllLL(linearLayout: LinearLayout, status: ExerciseStatus?) {
     when (status) {
         ExerciseStatus.LOADING -> {
-            recyclerView.visibility = View.GONE
+            linearLayout.visibility = View.GONE
         }
         ExerciseStatus.ERROR -> {
-            recyclerView.visibility = View.GONE
+            linearLayout.visibility = View.GONE
         }
         ExerciseStatus.DONE -> {
-            recyclerView.visibility = View.VISIBLE
+            linearLayout.visibility = View.VISIBLE
         }
     }
 }

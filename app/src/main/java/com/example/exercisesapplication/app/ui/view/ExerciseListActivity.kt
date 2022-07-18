@@ -19,8 +19,10 @@ class ExerciseListActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        binding.musclesListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.musclesListRv.adapter = ExerciseListAdapter()
+        binding.absListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.absListRv.adapter = ExerciseListAdapter()
+        binding.bicepsListRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.bicepsListRv.adapter = ExerciseListAdapter()
         getExercisesList()
         binding.musclesStatusBtn.setOnClickListener {
             getExercisesList()

@@ -20,19 +20,31 @@
             android:padding="4dp"
             tools:context=".app.ui.view.ExerciseListActivity">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/muscles_list_rv"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="horizontal"
+                android:orientation="vertical"
+                app:allLL="@{viewModel.exerciseStatus}"
                 android:visibility="invisible"
-                app:allListData="@{viewModel.exercises}"
-                app:allRV="@{viewModel.exerciseStatus}"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/exercise_item" />
+                app:layout_constraintLeft_toLeftOf="parent">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/abs_list_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="horizontal"
+                    app:allListData="@{viewModel.abs}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/exercise_item" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/biceps_list_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="horizontal"
+                    app:allListData="@{viewModel.biceps}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/exercise_item" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/muscles_status_tv"
