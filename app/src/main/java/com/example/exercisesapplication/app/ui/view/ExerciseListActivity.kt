@@ -28,6 +28,7 @@ class ExerciseListActivity : AppCompatActivity() {
     }
 
     private fun getExercisesList() {
-        viewModel.getAllExercisesList()
+//        viewModel.getAllExercisesList()
+        viewModel.filterExercises()
     }
 }

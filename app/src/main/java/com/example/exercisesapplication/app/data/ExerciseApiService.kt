@@ -9,6 +9,7 @@ import retrofit2.Retrofit.*
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.Query
 
 private const val API_URL = "https://exercisedb.p.rapidapi.com/"
 
@@ -29,6 +30,12 @@ interface ExerciseApiService {
     @GET("exercises")
     @Headers("X-RapidAPI-Host: exercisedb.p.rapidapi.com", "X-RapidAPI-Key: 75be40b2c2msh83aae7a3af8fcdfp1ea10bjsna4248eaa1ddb")
     suspend fun getExercisesList(): List<Exercise>
+
+    @GET("exercises/target")
+    @Headers("X-RapidAPI-Host: exercisedb.p.rapidapi.com", "X-RapidAPI-Key: 75be40b2c2msh83aae7a3af8fcdfp1ea10bjsna4248eaa1ddb")
+    suspend fun getExercisesListByTarget(
+        @Query("") target: String
+    ): List<Exercise>
 }
 
 object ExerciseApi {

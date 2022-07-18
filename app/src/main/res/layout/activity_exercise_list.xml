@@ -4,56 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.exercisesapplication.app.ui.viewmodel.ExerciseViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="4dp"
-        tools:context=".app.ui.view.ExerciseListActivity">
+        android:layout_height="wrap_content">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/muscles_list_rv"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            android:scrollbars = "horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:allListData="@{viewModel.exercises}"
-            app:allRV="@{viewModel.exerciseStatus}"
-            tools:listitem="@layout/exercise_item" />
+            android:layout_height="match_parent"
+            android:padding="4dp"
+            tools:context=".app.ui.view.ExerciseListActivity">
 
-        <TextView
-            android:id="@+id/muscles_status_tv"
-            android:gravity="center"
-            android:visibility="invisible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:allTV="@{viewModel.exerciseStatus}" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/muscles_list_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"
+                android:visibility="invisible"
+                app:allListData="@{viewModel.exercises}"
+                app:allRV="@{viewModel.exerciseStatus}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/exercise_item" />
 
-        <Button
-            android:id="@+id/muscles_status_btn"
-            android:gravity="center"
-            android:visibility="invisible"
-            android:layout_marginTop="16dp"
-            android:padding="0dp"
-            android:text="REFRESH"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/muscles_status_tv"
-            app:allBtn="@{viewModel.exerciseStatus}" />
+            <TextView
+                android:id="@+id/muscles_status_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:visibility="invisible"
+                app:allTV="@{viewModel.exerciseStatus}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/muscles_status_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:padding="0dp"
+                android:text="REFRESH"
+                android:visibility="invisible"
+                app:allBtn="@{viewModel.exerciseStatus}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/muscles_status_tv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
